@@ -1,0 +1,79 @@
+<section class="card border-0 shadow-sm">
+  <div class="card-body">
+    <h1 class="h4 mb-3">{{ title }}</h1>
+
+    @if (formMessage(); as alertMessage) {
+      <div class="alert alert-{{ alertMessage.type }}" role="alert">
+        {{ alertMessage.text }}
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="save()" class="row g-3">
+      <div class="col-md-4">
+        <label for="dni" class="form-label">DNI</label>
+        <input id="dni" type="text" class="form-control" formControlName="dni" maxlength="8" />
+        <small class="text-danger">{{ fieldError('dni') }}</small>
+      </div>
+
+      <div class="col-md-4">
+        <label for="nombres" class="form-label">Nombres</label>
+        <input id="nombres" type="text" class="form-control" formControlName="nombres" />
+        <small class="text-danger">{{ fieldError('nombres') }}</small>
+      </div>
+
+      <div class="col-md-4">
+        <label for="apellidos" class="form-label">Apellidos</label>
+        <input id="apellidos" type="text" class="form-control" formControlName="apellidos" />
+        <small class="text-danger">{{ fieldError('apellidos') }}</small>
+      </div>
+
+      <div class="col-md-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input id="edad" type="number" class="form-control" formControlName="edad" min="0" max="120" />
+        <small class="text-danger">{{ fieldError('edad') }}</small>
+      </div>
+
+      <div class="col-md-3">
+        <label for="sexo" class="form-label">Sexo</label>
+        <select id="sexo" class="form-select" formControlName="sexo">
+          <option value="">Seleccione...</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <small class="text-danger">{{ fieldError('sexo') }}</small>
+      </div>
+
+      <div class="col-md-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input id="telefono" type="text" class="form-control" formControlName="telefono" maxlength="9" />
+        <small class="text-danger">{{ fieldError('telefono') }}</small>
+      </div>
+
+      <div class="col-md-3">
+        <label for="fechaIngreso" class="form-label">Fecha de ingreso</label>
+        <input id="fechaIngreso" type="date" class="form-control" formControlName="fechaIngreso" />
+        <small class="text-danger">{{ fieldError('fechaIngreso') }}</small>
+      </div>
+
+      <div class="col-12">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input id="direccion" type="text" class="form-control" formControlName="direccion" />
+        <small class="text-danger">{{ fieldError('direccion') }}</small>
+      </div>
+
+      <div class="col-12">
+        <label for="diagnostico" class="form-label">Diagnóstico</label>
+        <textarea id="diagnostico" class="form-control" rows="3" formControlName="diagnostico"></textarea>
+        <small class="text-danger">{{ fieldError('diagnostico') }}</small>
+      </div>
+
+      <div class="col-12 d-flex flex-wrap gap-2">
+        <button type="submit" class="btn btn-primary" [disabled]="form.disabled">
+          {{ isEditMode() ? 'Guardar cambios' : 'Registrar paciente' }}
+        </button>
+        <a class="btn btn-outline-secondary" routerLink="/pacientes">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
