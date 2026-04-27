@@ -1,0 +1,33 @@
+:root {
+  --hospital-bg: #f4f7fb;
+}
+
+body {
+  background-color: var(--hospital-bg);
+  color: #1f2937;
+}
+
+.card {
+  border-radius: 0.9rem;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.text-danger {
+  min-height: 1rem;
+  display: inline-block;
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  main.container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

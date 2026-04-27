@@ -1,0 +1,32 @@
+@if (patient) {
+  <section class="card border-0 shadow-sm">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 mb-0">Detalle del paciente</h1>
+        <a class="btn btn-outline-secondary btn-sm" routerLink="/pacientes">Volver</a>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6"><strong>DNI:</strong> {{ patient.dni }}</div>
+        <div class="col-md-6"><strong>Nombres:</strong> {{ patient.nombres }}</div>
+        <div class="col-md-6"><strong>Apellidos:</strong> {{ patient.apellidos }}</div>
+        <div class="col-md-6"><strong>Edad:</strong> {{ patient.edad }}</div>
+        <div class="col-md-6"><strong>Sexo:</strong> {{ patient.sexo }}</div>
+        <div class="col-md-6"><strong>Teléfono:</strong> {{ patient.telefono }}</div>
+        <div class="col-md-6"><strong>Dirección:</strong> {{ patient.direccion }}</div>
+        <div class="col-md-6"><strong>Diagnóstico:</strong> {{ patient.diagnostico }}</div>
+        <div class="col-md-6"><strong>Fecha de ingreso:</strong> {{ patient.fechaIngreso | date : 'dd/MM/yyyy' }}</div>
+        <div class="col-md-6"><strong>Última actualización:</strong> {{ patient.updatedAt | date : 'dd/MM/yyyy HH:mm' }}</div>
+      </div>
+
+      <div class="mt-4 d-flex gap-2">
+        <a class="btn btn-primary" [routerLink]="['/pacientes/editar', patient.id]">Editar</a>
+        <a class="btn btn-outline-secondary" routerLink="/pacientes">Regresar al listado</a>
+      </div>
+    </div>
+  </section>
+} @else {
+  <div class="alert alert-danger" role="alert">
+    Paciente no encontrado. <a routerLink="/pacientes" class="alert-link">Volver al listado</a>
+  </div>
+}
